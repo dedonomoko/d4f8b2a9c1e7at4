@@ -1,753 +1,1059 @@
 <!DOCTYPE html>
-
 <html lang="nl">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Full Body Trainingen</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { color-scheme: light; }
-  body {
-    background: #ffffff !important;
-    color: #111 !important;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-  }
-  body { padding-bottom: 140px; }
-
-  @media (prefers-color-scheme: dark) {
-    html, body { background: #ffffff !important; color: #111 !important; }
-  }
-
-  /* TABS */
-  .tabs {
-    background: #fff;
-    border-bottom: 2px solid #111;
-  }
-  .tabs-inner {
-    max-width: 640px;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-  }
-  .tab {
-    flex: 1;
-    padding: 18px 12px;
-    text-align: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    letter-spacing: 0.08em;
-    cursor: pointer;
-    color: #bbb;
-    transition: color 0.2s;
-    user-select: none;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -2px;
-  }
-  .tab.active { color: #111; border-bottom-color: #111; }
-
-  /* PANEL */
-  .panel { display: none; }
-  .panel.active { display: block; }
-  .panel-inner { max-width: 640px; margin: 0 auto; padding: 48px 24px 0; }
-
-  /* HEADER */
-  .panel-header { margin-bottom: 0; padding-bottom: 48px; }
-  .panel-header h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 72px;
-    line-height: 1;
-    letter-spacing: 0.02em;
-    margin-bottom: 12px;
-  }
-  .panel-header p { color: #555; font-size: 15px; }
-
-  /* DIVIDER full width */
-  .block-divider {
-    border: none;
-    border-top: 2px solid #111;
-    margin: 0;
-  }
-
-  /* BLOK */
-  .block-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 40px;
-    letter-spacing: 0.04em;
-    margin-top: 48px;
-    margin-bottom: 48px;
-  }
-  .blok-label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: #999;
-    margin-bottom: 40px;
-  }
-
-  /* OEFENING */
-  .exercise { margin-bottom: 56px; }
-  .exercise:last-child { margin-bottom: 48px; }
-
-  .exercise-header {
-    margin-bottom: 4px;
-  }
-  .exercise-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 0.04em;
-    color: #111;
-    text-decoration: none;
-    line-height: 1;
-  }
-  .exercise-name:hover { text-decoration: underline; }
-
-  .exercise-meta {
-    font-size: 15px;
-    color: #555;
-    margin-bottom: 16px;
-  }
-  .exercise-thumb {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #f2f2f2;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 600;
-    color: #bbb;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 20px;
-  }
-  .exercise-bullets {
-    list-style: none;
-    font-size: 16px;
-    color: #222;
-  }
-  .exercise-bullets li { padding: 5px 0; padding-left: 16px; position: relative; }
-  .exercise-bullets li::before { content: '–'; position: absolute; left: 0; color: #111; }
-  .exercise-bullets li.fout { color: #111; }
-  .exercise-bullets li.fout::before { content: '✕'; font-style: normal; color: #e00; font-size: 12px; top: 7px; }
-</style>
-</head>
-<body>
-<div class="tabs">
-<div class="tabs-inner">
-<div class="tab active" onclick="toon('a', this)">Strength</div>
-<div class="tab" onclick="toon('b', this)">Stability</div>
-<div class="tab" onclick="toon('c', this)">Explosive</div>
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>
+      Full Body Trainingen
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="styles.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="tabs">
+      <div class="tabs-inner">
+        <div class="tab active" onclick="toon('a', this)">
+          Strength
+        </div>
+        <div class="tab" onclick="toon('b', this)">
+          Stability
+        </div>
+        <div class="tab" onclick="toon('c', this)">
+          Explosive
+        </div>
+      </div>
+    </div>
+    <!-- ===== TRAINING A ===== -->
+    <div class="panel active" id="panel-a">
+      <div class="panel-inner">
+        <div class="panel-header">
+          <h1>
+            Strength
+          </h1>
+          <p>
+            Push &amp; core focus  ·  50 min  ·  3 blokken  ·  3 rondes per blok  ·  60s rust
+          </p>
+        </div>
+        <hr style="border:none;border-top:1px solid #e0e0e0;margin:0;width:100vw;position:relative;left:50%;transform:translateX(-50%)"/>
+        <!-- WARMUP -->
+        <div class="block-title">
+          Warming Up
+        </div>
+        <div class="exercise">
+          <div class="exercise-header"><span class="exercise-name">1. Push-up</span>
+          </div>
+          <div class="exercise-meta">
+            10 reps  ·  Bodyweight
+          </div>
+          <div class="exercise-media">
+            <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Burpee.mp4">
+          </video>
+          <div class="exercise-thumb exercise-placeholder" style="display:none">
+            Afbeelding volgt
+          </div>
+        </div>
+        <ul class="exercise-bullets">
+          <li>
+            Handen iets breder dan schouders, lichaam rechte lijn
+          </li>
+          <li>
+            Ellebogen 45deg van romp, borst bijna de grond
+          </li>
+          <li class="fout">
+            Heupen laten zakken of steken
+          </li>
+        </ul>
+      </div>
+      <div class="exercise">
+        <div class="exercise-header"><span class="exercise-name">2. Inverted Row</span>
+        </div>
+        <div class="exercise-meta">
+          10 reps  ·  Bodyweight
+        </div>
+        <div class="exercise-media">
+          <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Inverted Row.mp4">
+        </video>
+        <div class="exercise-thumb exercise-placeholder" style="display:none">
+          Afbeelding volgt
+        </div>
+      </div>
+      <ul class="exercise-bullets">
+        <li>
+          Stang laag instellen, lichaam recht als een plank
+        </li>
+        <li>
+          Trek borst naar stang, ellebogen langs je lijf
+        </li>
+        <li class="fout">
+          Heupen laten zakken
+        </li>
+      </ul>
+    </div>
+    <div class="exercise">
+      <div class="exercise-header"><span class="exercise-name">3. Goblet Squat</span>
+      </div>
+      <div class="exercise-meta">
+        10 reps  ·  Bodyweight
+      </div>
+      <div class="exercise-media">
+        <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Goblet Squat.mp4">
+      </video>
+      <div class="exercise-thumb exercise-placeholder" style="display:none">
+        Afbeelding volgt
+      </div>
+    </div>
+    <ul class="exercise-bullets">
+      <li>
+        Handen voor borst gevouwen, voeten iets breder dan schouders
+      </li>
+      <li>
+        Heupen diep omlaag, borst omhoog, knieën naar buiten
+      </li>
+      <li class="fout">
+        Borst naar voren laten zakken
+      </li>
+    </ul>
+  </div>
 </div>
+<hr class="block-divider"/>
+<div class="panel-inner" style="padding-top:0; padding-bottom:0">
+  <div class="block-title">
+    Block 1: Push &amp; Core
+  </div>
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-name">4. Single Arm Chest Press</span>
+    </div>
+    <div class="exercise-meta">
+      10 reps/zijde  ·  15 kg
+    </div>
+    <div class="exercise-media">
+      <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Single Arm Chest Press.mp4">
+    </video>
+    <div class="exercise-thumb exercise-placeholder" style="display:none">
+      Afbeelding volgt
+    </div>
+  </div>
+  <ul class="exercise-bullets">
+    <li>
+      Core voorkomt rotatie tijdens de press
+    </li>
+    <li>
+      Langzaam omlaag, gecontroleerd omhoog
+    </li>
+    <li class="fout">
+      Schouder of heup mee laten draaien
+    </li>
+  </ul>
 </div>
-<!-- ===== TRAINING A ===== -->
-<div class="panel active" id="panel-a">
-<div class="panel-inner">
-<div class="panel-header">
-<h1>Strength</h1>
-<p>Push &amp; core focus  ·  50 min  ·  3 blokken  ·  3 rondes per blok  ·  60s rust</p>
-</div><hr style="border:none;border-top:1px solid #e0e0e0;margin:0;width:100vw;position:relative;left:50%;transform:translateX(-50%)"/>
-<!-- WARMUP -->
-<div class="block-title">Warming Up</div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/push-up" target="_blank">1. Push-up</a></div>
-<div class="exercise-meta">10 reps  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Burpee.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">5. Single Arm Row</span>
+  </div>
+  <div class="exercise-meta">
+    10 reps/zijde  ·  22,5 kg
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Single Arm Row.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Handen iets breder dan schouders, lichaam rechte lijn</li>
-<li>Ellebogen 45° van romp, borst bijna de grond</li>
-<li class="fout">Heupen laten zakken of steken</li>
+  <li>
+    Hand en knie op bench, rug plat en heupen vierkant
+  </li>
+  <li>
+    Elleboog langs lijf omhoog, schouderblad naar binnen knijpen
+  </li>
+  <li class="fout">
+    Roteren met je romp
+  </li>
 </ul>
 </div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/inverted-row" target="_blank">2. Inverted Row</a></div>
-<div class="exercise-meta">10 reps  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Inverted Row.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">6. Plank</span>
+  </div>
+  <div class="exercise-meta">
+    45s  ·  Bodyweight
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Plank.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Stang laag instellen, lichaam recht als een plank</li>
-<li>Trek borst naar stang, ellebogen langs je lijf</li>
-<li class="fout">Heupen laten zakken</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-goblet-squat" target="_blank">3. Goblet Squat</a></div>
-<div class="exercise-meta">10 reps  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Goblet Squat.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Handen voor borst gevouwen, voeten iets breder dan schouders</li>
-<li>Heupen diep omlaag, borst omhoog, knieën naar buiten</li>
-<li class="fout">Borst naar voren laten zakken</li>
+  <li>
+    Ellebogen onder schouders, lichaam één rechte lijn
+  </li>
+  <li>
+    Glutes en buik hard aanspannen
+  </li>
+  <li class="fout">
+    Heupen te hoog of laag, adem inhouden
+  </li>
 </ul>
 </div>
 </div>
 <hr class="block-divider"/>
 <div class="panel-inner" style="padding-top:0; padding-bottom:0">
-<div class="block-title">Block 1: Push &amp; Core</div>
+  <div class="block-title">
+    Block 2: Legs &amp; Stabiliteit
+  </div>
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-name">7. Dumbbell Lunge</span>
+    </div>
+    <div class="exercise-meta">
+      10 reps/been  ·  12,5 kg/hand
+    </div>
+    <div class="exercise-media">
+      <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Lunge.mp4">
+    </video>
+    <div class="exercise-thumb exercise-placeholder" style="display:none">
+      Afbeelding volgt
+    </div>
+  </div>
+  <ul class="exercise-bullets">
+    <li>
+      Grote stap vooruit, beide knieën 90deg, romp rechtop
+    </li>
+    <li>
+      Via voorste hiel terug omhoog
+    </li>
+    <li class="fout">
+      Knie voorbij tenen of romp naar voren leunen
+    </li>
+  </ul>
+</div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-single-arm-chest-press" target="_blank">4. Single Arm Chest Press</a></div>
-<div class="exercise-meta">10 reps/zijde  ·  15 kg</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Single Arm Chest Press.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">8. Romanian Deadlift</span>
+  </div>
+  <div class="exercise-meta">
+    10 reps  ·  20 kg/hand
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Romanian Deadlift.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Core voorkomt rotatie tijdens de press</li>
-<li>Langzaam omlaag, gecontroleerd omhoog</li>
-<li class="fout">Schouder of heup mee laten draaien</li>
+  <li>
+    Heupen naar achteren, rug plat, stretch in hamstrings voelen
+  </li>
+  <li>
+    Licht gebogen knieën, halters dicht langs je benen
+  </li>
+  <li class="fout">
+    Rug laten ronden of te diep zakken
+  </li>
 </ul>
 </div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-single-arm-row" target="_blank">5. Single Arm Row</a></div>
-<div class="exercise-meta">10 reps/zijde  ·  22,5 kg</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Single Arm Row.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">9. Incline Bench Press</span>
+  </div>
+  <div class="exercise-meta">
+    10 reps  ·  17,5 kg/hand
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Incline Bench Press.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Hand en knie op bench, rug plat en heupen vierkant</li>
-<li>Elleboog langs lijf omhoog, schouderblad naar binnen knijpen</li>
-<li class="fout">Roteren met je romp</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/plank" target="_blank">6. Plank</a></div>
-<div class="exercise-meta">45s  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Plank.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Ellebogen onder schouders, lichaam één rechte lijn</li>
-<li>Glutes en buik hard aanspannen</li>
-<li class="fout">Heupen te hoog of laag, adem inhouden</li>
-</ul>
-</div>
-</div>
-<hr class="block-divider"/>
-<div class="panel-inner" style="padding-top:0; padding-bottom:0">
-<div class="block-title">Block 2: Legs &amp; Stabiliteit</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-lunge" target="_blank">7. Dumbbell Lunge</a></div>
-<div class="exercise-meta">10 reps/been  ·  12,5 kg/hand</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Lunge.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Grote stap vooruit, beide knieën 90°, romp rechtop</li>
-<li>Via voorste hiel terug omhoog</li>
-<li class="fout">Knie voorbij tenen of romp naar voren leunen</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-romanian-deadlift" target="_blank">8. Romanian Deadlift</a></div>
-<div class="exercise-meta">10 reps  ·  20 kg/hand</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Romanian Deadlift.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Heupen naar achteren, rug plat, stretch in hamstrings voelen</li>
-<li>Licht gebogen knieën, halters dicht langs je benen</li>
-<li class="fout">Rug laten ronden of te diep zakken</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-incline-bench-press" target="_blank">9. Incline Bench Press</a></div>
-<div class="exercise-meta">10 reps  ·  17,5 kg/hand</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Incline Bench Press.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Bench op 30-45°, schouderbladen in de bench</li>
-<li>Focus op bovenste borst en voorste deltoid</li>
-<li class="fout">Onderrug van bench tillen</li>
+  <li>
+    Bench op 30-45deg, schouderbladen in de bench
+  </li>
+  <li>
+    Focus op bovenste borst en voorste deltoid
+  </li>
+  <li class="fout">
+    Onderrug van bench tillen
+  </li>
 </ul>
 </div>
 </div>
 <hr class="block-divider"/>
 <div class="panel-inner" style="padding-top:0; padding-bottom:0">
-<div class="block-title">Block 3: Pull &amp; Core</div>
+  <div class="block-title">
+    Block 3: Pull &amp; Core
+  </div>
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-name">10. Pull-ups</span>
+    </div>
+    <div class="exercise-meta">
+      Max reps  ·  Bodyweight
+    </div>
+    <div class="exercise-media">
+      <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Pull Ups.mp4">
+    </video>
+    <div class="exercise-thumb exercise-placeholder" style="display:none">
+      Afbeelding volgt
+    </div>
+  </div>
+  <ul class="exercise-bullets">
+    <li>
+      Dead hang start, ellebogen naar beneden trekken
+    </li>
+    <li>
+      2-3s gecontroleerd omlaag
+    </li>
+    <li class="fout">
+      Schommelen
+    </li>
+  </ul>
+</div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/pull-ups" target="_blank">10. Pull-ups</a></div>
-<div class="exercise-meta">Max reps  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Pull Ups.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">11. Chin-ups</span>
+  </div>
+  <div class="exercise-meta">
+    Max reps  ·  Bodyweight
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Chin Ups.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Dead hang start, ellebogen naar beneden trekken</li>
-<li>2-3s gecontroleerd omlaag</li>
-<li class="fout">Schommelen</li>
+  <li>
+    Palmen naar je toe, kin boven de stang
+  </li>
+  <li>
+    Langzaam omlaag tot dode hang
+  </li>
+  <li class="fout">
+    Half zakken
+  </li>
 </ul>
 </div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/chin-ups" target="_blank">11. Chin-ups</a></div>
-<div class="exercise-meta">Max reps  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Chin Ups.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">12. Kettlebell Swing</span>
+  </div>
+  <div class="exercise-meta">
+    15 reps  ·  16 kg KB
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Kettlebell Swing.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Palmen naar je toe, kin boven de stang</li>
-<li>Langzaam omlaag tot dode hang</li>
-<li class="fout">Half zakken</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/kettlebell-swing" target="_blank">12. Kettlebell Swing</a></div>
-<div class="exercise-meta">15 reps  ·  16 kg KB</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Kettlebell Swing.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Heupen explosief naar voren, armen passief</li>
-<li>KB tot schouderhoogte, core strak bij elke rep</li>
-<li class="fout">Squatbeweging maken</li>
+  <li>
+    Heupen explosief naar voren, armen passief
+  </li>
+  <li>
+    KB tot schouderhoogte, core strak bij elke rep
+  </li>
+  <li class="fout">
+    Squatbeweging maken
+  </li>
 </ul>
 </div>
 </div>
 </div>
 <!-- ===== TRAINING B ===== -->
 <div class="panel" id="panel-b">
-<div class="panel-inner">
-<div class="panel-header">
-<h1>Stability</h1>
-<p>Pull &amp; legs focus  ·  50 min  ·  3 blokken  ·  3 rondes per blok  ·  60s rust</p>
-</div><hr style="border:none;border-top:1px solid #e0e0e0;margin:0;width:100vw;position:relative;left:50%;transform:translateX(-50%)"/>
-<div class="block-title">Warming Up</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/push-up" target="_blank">1. Push-up</a></div>
-<div class="exercise-meta">10 reps  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Push Up.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Handen iets breder dan schouders, lichaam rechte lijn</li>
-<li>Ellebogen 45° van romp, borst bijna de grond</li>
-<li class="fout">Heupen laten zakken of steken</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/inverted-row" target="_blank">2. Inverted Row</a></div>
-<div class="exercise-meta">10 reps  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Inverted Row.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Stang laag instellen, lichaam recht als een plank</li>
-<li>Trek borst naar stang, ellebogen langs je lijf</li>
-<li class="fout">Heupen laten zakken</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/kettlebell-swing" target="_blank">3. Kettlebell Swing</a></div>
-<div class="exercise-meta">12 reps  ·  12 kg KB</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Kettlebell Swing.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Heupen explosief naar voren, armen passief</li>
-<li>Licht gewicht, mobiliseren niet uitputten</li>
-<li class="fout">Squatbeweging maken</li>
-</ul>
-</div>
-</div>
-<hr class="block-divider"/>
-<div class="panel-inner" style="padding-top:0; padding-bottom:0">
-<div class="block-title">Block 1: Pull</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/pull-ups" target="_blank">4. Pull-ups</a></div>
-<div class="exercise-meta">Max reps  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Pull Ups.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Dead hang start, ellebogen naar beneden trekken</li>
-<li>2-3s gecontroleerd omlaag</li>
-<li class="fout">Schommelen</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-single-arm-row" target="_blank">5. Single Arm Row</a></div>
-<div class="exercise-meta">10 reps/zijde  ·  22,5 kg</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Single Arm Row.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Hand en knie op bench, rug plat en heupen vierkant</li>
-<li>Elleboog langs lijf omhoog, schouderblad naar binnen knijpen</li>
-<li class="fout">Roteren met je romp</li>
-</ul>
+  <div class="panel-inner">
+    <div class="panel-header">
+      <h1>
+        Stability
+      </h1>
+      <p>
+        Pull &amp; legs focus  ·  50 min  ·  3 blokken  ·  3 rondes per blok  ·  60s rust
+      </p>
+    </div>
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:0;width:100vw;position:relative;left:50%;transform:translateX(-50%)"/>
+    <div class="block-title">
+      Warming Up
+    </div>
+    <div class="exercise">
+      <div class="exercise-header"><span class="exercise-name">1. Push-up</span>
+      </div>
+      <div class="exercise-meta">
+        10 reps  ·  Bodyweight
+      </div>
+      <div class="exercise-media">
+        <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Push Up.mp4">
+      </video>
+      <div class="exercise-thumb exercise-placeholder" style="display:none">
+        Afbeelding volgt
+      </div>
+    </div>
+    <ul class="exercise-bullets">
+      <li>
+        Handen iets breder dan schouders, lichaam rechte lijn
+      </li>
+      <li>
+        Ellebogen 45deg van romp, borst bijna de grond
+      </li>
+      <li class="fout">
+        Heupen laten zakken of steken
+      </li>
+    </ul>
+  </div>
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-name">2. Inverted Row</span>
+    </div>
+    <div class="exercise-meta">
+      10 reps  ·  Bodyweight
+    </div>
+    <div class="exercise-media">
+      <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Inverted Row.mp4">
+    </video>
+    <div class="exercise-thumb exercise-placeholder" style="display:none">
+      Afbeelding volgt
+    </div>
+  </div>
+  <ul class="exercise-bullets">
+    <li>
+      Stang laag instellen, lichaam recht als een plank
+    </li>
+    <li>
+      Trek borst naar stang, ellebogen langs je lijf
+    </li>
+    <li class="fout">
+      Heupen laten zakken
+    </li>
+  </ul>
 </div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-chest-fly" target="_blank">6. Dumbbell Chest Fly</a></div>
-<div class="exercise-meta">12 reps  ·  12 kg/hand</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Chest Fly.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">3. Kettlebell Swing</span>
+  </div>
+  <div class="exercise-meta">
+    12 reps  ·  12 kg KB
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Kettlebell Swing.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Kleine vaste buiging in ellebogen, die hoek vasthouden</li>
-<li>Wijd naar buiten tot diepe stretch, borst samenknijpen terug</li>
-<li class="fout">Ellebogen bijbuigen of te zwaar gaan</li>
-</ul>
-</div>
-</div>
-<hr class="block-divider"/>
-<div class="panel-inner" style="padding-top:0; padding-bottom:0">
-<div class="block-title">Block 2: Legs &amp; Stabiliteit</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-goblet-squat" target="_blank">7. Goblet Squat</a></div>
-<div class="exercise-meta">10 reps  ·  16 kg KB</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Goblet Squat.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>KB tegen borst, diepe squat, knieën actief naar buiten</li>
-<li>Borst omhoog, hielen op de grond</li>
-<li class="fout">Borst voorover laten zakken</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-lunge" target="_blank">8. Dumbbell Lunge</a></div>
-<div class="exercise-meta">10 reps/been  ·  12,5 kg/hand</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Lunge.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Grote stap vooruit, beide knieën 90°, romp rechtop</li>
-<li>Via voorste hiel terug omhoog</li>
-<li class="fout">Knie voorbij tenen of romp naar voren leunen</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-incline-bench-press" target="_blank">9. Incline Bench Press</a></div>
-<div class="exercise-meta">10 reps  ·  17,5 kg/hand</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Incline Bench Press.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Bench op 30-45°, schouderbladen in de bench</li>
-<li>Focus op bovenste borst en voorste deltoid</li>
-<li class="fout">Onderrug van bench tillen</li>
+  <li>
+    Heupen explosief naar voren, armen passief
+  </li>
+  <li>
+    Licht gewicht, mobiliseren niet uitputten
+  </li>
+  <li class="fout">
+    Squatbeweging maken
+  </li>
 </ul>
 </div>
 </div>
 <hr class="block-divider"/>
 <div class="panel-inner" style="padding-top:0; padding-bottom:0">
-<div class="block-title">Block 3: Core &amp; Push</div>
+  <div class="block-title">
+    Block 1: Pull
+  </div>
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-name">4. Pull-ups</span>
+    </div>
+    <div class="exercise-meta">
+      Max reps  ·  Bodyweight
+    </div>
+    <div class="exercise-media">
+      <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Pull Ups.mp4">
+    </video>
+    <div class="exercise-thumb exercise-placeholder" style="display:none">
+      Afbeelding volgt
+    </div>
+  </div>
+  <ul class="exercise-bullets">
+    <li>
+      Dead hang start, ellebogen naar beneden trekken
+    </li>
+    <li>
+      2-3s gecontroleerd omlaag
+    </li>
+    <li class="fout">
+      Schommelen
+    </li>
+  </ul>
+</div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/plank" target="_blank">10. Plank</a></div>
-<div class="exercise-meta">60s  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Plank.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">5. Single Arm Row</span>
+  </div>
+  <div class="exercise-meta">
+    10 reps/zijde  ·  22,5 kg
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Single Arm Row.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Ellebogen onder schouders, lichaam één rechte lijn</li>
-<li>Glutes en buik hard aanspannen</li>
-<li class="fout">Heupen te hoog of laag, adem inhouden</li>
+  <li>
+    Hand en knie op bench, rug plat en heupen vierkant
+  </li>
+  <li>
+    Elleboog langs lijf omhoog, schouderblad naar binnen knijpen
+  </li>
+  <li class="fout">
+    Roteren met je romp
+  </li>
 </ul>
 </div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/chin-ups" target="_blank">11. Chin-ups</a></div>
-<div class="exercise-meta">Max reps  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Chin Ups.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">6. Dumbbell Chest Fly</span>
+  </div>
+  <div class="exercise-meta">
+    12 reps  ·  12 kg/hand
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Chest Fly.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Palmen naar je toe, kin boven de stang</li>
-<li>Langzaam omlaag tot dode hang</li>
-<li class="fout">Half zakken</li>
+  <li>
+    Kleine vaste buiging in ellebogen, die hoek vasthouden
+  </li>
+  <li>
+    Wijd naar buiten tot diepe stretch, borst samenknijpen terug
+  </li>
+  <li class="fout">
+    Ellebogen bijbuigen of te zwaar gaan
+  </li>
+</ul>
+</div>
+</div>
+<hr class="block-divider"/>
+<div class="panel-inner" style="padding-top:0; padding-bottom:0">
+  <div class="block-title">
+    Block 2: Legs &amp; Stabiliteit
+  </div>
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-name">7. Goblet Squat</span>
+    </div>
+    <div class="exercise-meta">
+      10 reps  ·  16 kg KB
+    </div>
+    <div class="exercise-media">
+      <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Goblet Squat.mp4">
+    </video>
+    <div class="exercise-thumb exercise-placeholder" style="display:none">
+      Afbeelding volgt
+    </div>
+  </div>
+  <ul class="exercise-bullets">
+    <li>
+      KB tegen borst, diepe squat, knieën actief naar buiten
+    </li>
+    <li>
+      Borst omhoog, hielen op de grond
+    </li>
+    <li class="fout">
+      Borst voorover laten zakken
+    </li>
+  </ul>
+</div>
+<div class="exercise">
+  <div class="exercise-header"><span class="exercise-name">8. Dumbbell Lunge</span>
+  </div>
+  <div class="exercise-meta">
+    10 reps/been  ·  12,5 kg/hand
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Lunge.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
+</div>
+<ul class="exercise-bullets">
+  <li>
+    Grote stap vooruit, beide knieën 90deg, romp rechtop
+  </li>
+  <li>
+    Via voorste hiel terug omhoog
+  </li>
+  <li class="fout">
+    Knie voorbij tenen of romp naar voren leunen
+  </li>
 </ul>
 </div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-bench-press" target="_blank">12. Dumbbell Bench Press</a></div>
-<div class="exercise-meta">8-10 reps  ·  20 kg/hand</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Bench Press.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">9. Incline Bench Press</span>
+  </div>
+  <div class="exercise-meta">
+    10 reps  ·  17,5 kg/hand
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Incline Bench Press.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Schouderbladen in de bench drukken</li>
-<li>Ellebogen 45-60° van romp, langzaam omlaag, explosief omhoog</li>
-<li class="fout">Ellebogen te wijd of onderrug van bench tillen</li>
+  <li>
+    Bench op 30-45deg, schouderbladen in de bench
+  </li>
+  <li>
+    Focus op bovenste borst en voorste deltoid
+  </li>
+  <li class="fout">
+    Onderrug van bench tillen
+  </li>
+</ul>
+</div>
+</div>
+<hr class="block-divider"/>
+<div class="panel-inner" style="padding-top:0; padding-bottom:0">
+  <div class="block-title">
+    Block 3: Core &amp; Push
+  </div>
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-name">10. Plank</span>
+    </div>
+    <div class="exercise-meta">
+      60s  ·  Bodyweight
+    </div>
+    <div class="exercise-media">
+      <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Plank.mp4">
+    </video>
+    <div class="exercise-thumb exercise-placeholder" style="display:none">
+      Afbeelding volgt
+    </div>
+  </div>
+  <ul class="exercise-bullets">
+    <li>
+      Ellebogen onder schouders, lichaam één rechte lijn
+    </li>
+    <li>
+      Glutes en buik hard aanspannen
+    </li>
+    <li class="fout">
+      Heupen te hoog of laag, adem inhouden
+    </li>
+  </ul>
+</div>
+<div class="exercise">
+  <div class="exercise-header"><span class="exercise-name">11. Chin-ups</span>
+  </div>
+  <div class="exercise-meta">
+    Max reps  ·  Bodyweight
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Chin Ups.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
+</div>
+<ul class="exercise-bullets">
+  <li>
+    Palmen naar je toe, kin boven de stang
+  </li>
+  <li>
+    Langzaam omlaag tot dode hang
+  </li>
+  <li class="fout">
+    Half zakken
+  </li>
+</ul>
+</div>
+<div class="exercise">
+  <div class="exercise-header"><span class="exercise-name">12. Dumbbell Bench Press</span>
+  </div>
+  <div class="exercise-meta">
+    8-10 reps  ·  20 kg/hand
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Bench Press.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
+</div>
+<ul class="exercise-bullets">
+  <li>
+    Schouderbladen in de bench drukken
+  </li>
+  <li>
+    Ellebogen 45-60deg van romp, langzaam omlaag, explosief omhoog
+  </li>
+  <li class="fout">
+    Ellebogen te wijd of onderrug van bench tillen
+  </li>
 </ul>
 </div>
 </div>
 </div>
 <!-- ===== TRAINING C ===== -->
 <div class="panel" id="panel-c">
-<div class="panel-inner">
-<div class="panel-header">
-<h1>Explosive</h1>
-<p>Full body &amp; conditionering  ·  50 min  ·  3 blokken  ·  3 rondes per blok  ·  60s rust</p>
-</div><hr style="border:none;border-top:1px solid #e0e0e0;margin:0;width:100vw;position:relative;left:50%;transform:translateX(-50%)"/>
-<div class="block-title">Warming Up</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/push-up" target="_blank">1. Push-up</a></div>
-<div class="exercise-meta">10 reps  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Push Up.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Handen iets breder dan schouders, lichaam rechte lijn</li>
-<li>Ellebogen 45° van romp, borst bijna de grond</li>
-<li class="fout">Heupen laten zakken of steken</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/inverted-row" target="_blank">2. Inverted Row</a></div>
-<div class="exercise-meta">10 reps  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Inverted Row.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Stang laag instellen, lichaam recht als een plank</li>
-<li>Trek borst naar stang, ellebogen langs je lijf</li>
-<li class="fout">Heupen laten zakken</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-lunge" target="_blank">3. Lunge</a></div>
-<div class="exercise-meta">8 reps/been  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Lunge.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Grote stap vooruit, beide knieën 90°, romp rechtop</li>
-<li>Langzaam en gecontroleerd, mobiliseren</li>
-<li class="fout">Romp naar voren leunen</li>
-</ul>
-</div>
-</div>
-<hr class="block-divider"/>
-<div class="panel-inner" style="padding-top:0; padding-bottom:0">
-<div class="block-title">Block 1: Push &amp; Pull</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-bench-press" target="_blank">4. Dumbbell Bench Press</a></div>
-<div class="exercise-meta">8 reps  ·  20 kg/hand</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Bench Press.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Schouderbladen in de bench drukken</li>
-<li>Ellebogen 45-60° van romp, langzaam omlaag, explosief omhoog</li>
-<li class="fout">Ellebogen te wijd of onderrug van bench tillen</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/pull-ups" target="_blank">5. Pull-ups</a></div>
-<div class="exercise-meta">Max reps  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Pull Ups.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Dead hang start, ellebogen naar beneden trekken</li>
-<li>2-3s gecontroleerd omlaag</li>
-<li class="fout">Schommelen</li>
-</ul>
+  <div class="panel-inner">
+    <div class="panel-header">
+      <h1>
+        Explosive
+      </h1>
+      <p>
+        Full body &amp; conditionering  ·  50 min  ·  3 blokken  ·  3 rondes per blok  ·  60s rust
+      </p>
+    </div>
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:0;width:100vw;position:relative;left:50%;transform:translateX(-50%)"/>
+    <div class="block-title">
+      Warming Up
+    </div>
+    <div class="exercise">
+      <div class="exercise-header"><span class="exercise-name">1. Push-up</span>
+      </div>
+      <div class="exercise-meta">
+        10 reps  ·  Bodyweight
+      </div>
+      <div class="exercise-media">
+        <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Push Up.mp4">
+      </video>
+      <div class="exercise-thumb exercise-placeholder" style="display:none">
+        Afbeelding volgt
+      </div>
+    </div>
+    <ul class="exercise-bullets">
+      <li>
+        Handen iets breder dan schouders, lichaam rechte lijn
+      </li>
+      <li>
+        Ellebogen 45deg van romp, borst bijna de grond
+      </li>
+      <li class="fout">
+        Heupen laten zakken of steken
+      </li>
+    </ul>
+  </div>
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-name">2. Inverted Row</span>
+    </div>
+    <div class="exercise-meta">
+      10 reps  ·  Bodyweight
+    </div>
+    <div class="exercise-media">
+      <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Inverted Row.mp4">
+    </video>
+    <div class="exercise-thumb exercise-placeholder" style="display:none">
+      Afbeelding volgt
+    </div>
+  </div>
+  <ul class="exercise-bullets">
+    <li>
+      Stang laag instellen, lichaam recht als een plank
+    </li>
+    <li>
+      Trek borst naar stang, ellebogen langs je lijf
+    </li>
+    <li class="fout">
+      Heupen laten zakken
+    </li>
+  </ul>
 </div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-single-arm-row" target="_blank">6. Single Arm Row</a></div>
-<div class="exercise-meta">10 reps/zijde  ·  22,5 kg</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Single Arm Row.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">3. Lunge</span>
+  </div>
+  <div class="exercise-meta">
+    8 reps/been  ·  Bodyweight
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Lunge.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Hand en knie op bench, rug plat en heupen vierkant</li>
-<li>Elleboog langs lijf omhoog, schouderblad naar binnen knijpen</li>
-<li class="fout">Roteren met je romp</li>
-</ul>
-</div>
-</div>
-<hr class="block-divider"/>
-<div class="panel-inner" style="padding-top:0; padding-bottom:0">
-<div class="block-title">Block 2: Legs</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-goblet-squat" target="_blank">7. Goblet Squat</a></div>
-<div class="exercise-meta">10 reps  ·  16 kg KB</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Goblet Squat.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>KB tegen borst, diepe squat, knieën actief naar buiten</li>
-<li>Borst omhoog, hielen op de grond</li>
-<li class="fout">Borst voorover laten zakken</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-romanian-deadlift" target="_blank">8. Romanian Deadlift</a></div>
-<div class="exercise-meta">10 reps  ·  20 kg/hand</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Romanian Deadlift.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Heupen naar achteren, rug plat, stretch in hamstrings voelen</li>
-<li>Licht gebogen knieën, halters dicht langs je benen</li>
-<li class="fout">Rug laten ronden of te diep zakken</li>
-</ul>
-</div>
-<div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/dumbbell-lunge" target="_blank">9. Dumbbell Lunge</a></div>
-<div class="exercise-meta">10 reps/been  ·  12,5 kg/hand</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Lunge.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
-</div>
-<ul class="exercise-bullets">
-<li>Grote stap vooruit, beide knieën 90°, romp rechtop</li>
-<li>Via voorste hiel terug omhoog</li>
-<li class="fout">Knie voorbij tenen of romp naar voren leunen</li>
+  <li>
+    Grote stap vooruit, beide knieën 90deg, romp rechtop
+  </li>
+  <li>
+    Langzaam en gecontroleerd, mobiliseren
+  </li>
+  <li class="fout">
+    Romp naar voren leunen
+  </li>
 </ul>
 </div>
 </div>
 <hr class="block-divider"/>
 <div class="panel-inner" style="padding-top:0; padding-bottom:0">
-<div class="block-title">Block 3: Core Finisher</div>
+  <div class="block-title">
+    Block 1: Push &amp; Pull
+  </div>
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-name">4. Dumbbell Bench Press</span>
+    </div>
+    <div class="exercise-meta">
+      8 reps  ·  20 kg/hand
+    </div>
+    <div class="exercise-media">
+      <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Bench Press.mp4">
+    </video>
+    <div class="exercise-thumb exercise-placeholder" style="display:none">
+      Afbeelding volgt
+    </div>
+  </div>
+  <ul class="exercise-bullets">
+    <li>
+      Schouderbladen in de bench drukken
+    </li>
+    <li>
+      Ellebogen 45-60deg van romp, langzaam omlaag, explosief omhoog
+    </li>
+    <li class="fout">
+      Ellebogen te wijd of onderrug van bench tillen
+    </li>
+  </ul>
+</div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/plank" target="_blank">10. Plank</a></div>
-<div class="exercise-meta">60s  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Plank.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">5. Pull-ups</span>
+  </div>
+  <div class="exercise-meta">
+    Max reps  ·  Bodyweight
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Pull Ups.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Ellebogen onder schouders, lichaam één rechte lijn</li>
-<li>Glutes en buik hard aanspannen</li>
-<li class="fout">Heupen te hoog of laag, adem inhouden</li>
+  <li>
+    Dead hang start, ellebogen naar beneden trekken
+  </li>
+  <li>
+    2-3s gecontroleerd omlaag
+  </li>
+  <li class="fout">
+    Schommelen
+  </li>
 </ul>
 </div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/chin-ups" target="_blank">11. Chin-ups</a></div>
-<div class="exercise-meta">Max reps  ·  Bodyweight</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Chin Ups.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">6. Single Arm Row</span>
+  </div>
+  <div class="exercise-meta">
+    10 reps/zijde  ·  22,5 kg
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Single Arm Row.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Palmen naar je toe, kin boven de stang</li>
-<li>Langzaam omlaag tot dode hang</li>
-<li class="fout">Half zakken</li>
+  <li>
+    Hand en knie op bench, rug plat en heupen vierkant
+  </li>
+  <li>
+    Elleboog langs lijf omhoog, schouderblad naar binnen knijpen
+  </li>
+  <li class="fout">
+    Roteren met je romp
+  </li>
+</ul>
+</div>
+</div>
+<hr class="block-divider"/>
+<div class="panel-inner" style="padding-top:0; padding-bottom:0">
+  <div class="block-title">
+    Block 2: Legs
+  </div>
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-name">7. Goblet Squat</span>
+    </div>
+    <div class="exercise-meta">
+      10 reps  ·  16 kg KB
+    </div>
+    <div class="exercise-media">
+      <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Goblet Squat.mp4">
+    </video>
+    <div class="exercise-thumb exercise-placeholder" style="display:none">
+      Afbeelding volgt
+    </div>
+  </div>
+  <ul class="exercise-bullets">
+    <li>
+      KB tegen borst, diepe squat, knieën actief naar buiten
+    </li>
+    <li>
+      Borst omhoog, hielen op de grond
+    </li>
+    <li class="fout">
+      Borst voorover laten zakken
+    </li>
+  </ul>
+</div>
+<div class="exercise">
+  <div class="exercise-header"><span class="exercise-name">8. Romanian Deadlift</span>
+  </div>
+  <div class="exercise-meta">
+    10 reps  ·  20 kg/hand
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Romanian Deadlift.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
+</div>
+<ul class="exercise-bullets">
+  <li>
+    Heupen naar achteren, rug plat, stretch in hamstrings voelen
+  </li>
+  <li>
+    Licht gebogen knieën, halters dicht langs je benen
+  </li>
+  <li class="fout">
+    Rug laten ronden of te diep zakken
+  </li>
 </ul>
 </div>
 <div class="exercise">
-<div class="exercise-header"><a class="exercise-name" href="https://movekit.com/exercises/kettlebell-swing" target="_blank">12. Kettlebell Swing</a></div>
-<div class="exercise-meta">15 reps  ·  16 kg KB</div>
-<div class="exercise-media">
-<video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Kettlebell Swing.mp4"></video>
-<div class="exercise-thumb exercise-placeholder" style="display:none">Afbeelding volgt</div>
+  <div class="exercise-header"><span class="exercise-name">9. Dumbbell Lunge</span>
+  </div>
+  <div class="exercise-meta">
+    10 reps/been  ·  12,5 kg/hand
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Dumbbell Lunge.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
 </div>
 <ul class="exercise-bullets">
-<li>Heupen explosief naar voren, armen passief</li>
-<li>KB tot schouderhoogte, core strak bij elke rep</li>
-<li class="fout">Squatbeweging maken</li>
+  <li>
+    Grote stap vooruit, beide knieën 90deg, romp rechtop
+  </li>
+  <li>
+    Via voorste hiel terug omhoog
+  </li>
+  <li class="fout">
+    Knie voorbij tenen of romp naar voren leunen
+  </li>
+</ul>
+</div>
+</div>
+<hr class="block-divider"/>
+<div class="panel-inner" style="padding-top:0; padding-bottom:0">
+  <div class="block-title">
+    Block 3: Core Finisher
+  </div>
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-name">10. Plank</span>
+    </div>
+    <div class="exercise-meta">
+      60s  ·  Bodyweight
+    </div>
+    <div class="exercise-media">
+      <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Plank.mp4">
+    </video>
+    <div class="exercise-thumb exercise-placeholder" style="display:none">
+      Afbeelding volgt
+    </div>
+  </div>
+  <ul class="exercise-bullets">
+    <li>
+      Ellebogen onder schouders, lichaam één rechte lijn
+    </li>
+    <li>
+      Glutes en buik hard aanspannen
+    </li>
+    <li class="fout">
+      Heupen te hoog of laag, adem inhouden
+    </li>
+  </ul>
+</div>
+<div class="exercise">
+  <div class="exercise-header"><span class="exercise-name">11. Chin-ups</span>
+  </div>
+  <div class="exercise-meta">
+    Max reps  ·  Bodyweight
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Chin Ups.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
+</div>
+<ul class="exercise-bullets">
+  <li>
+    Palmen naar je toe, kin boven de stang
+  </li>
+  <li>
+    Langzaam omlaag tot dode hang
+  </li>
+  <li class="fout">
+    Half zakken
+  </li>
+</ul>
+</div>
+<div class="exercise">
+  <div class="exercise-header"><span class="exercise-name">12. Kettlebell Swing</span>
+  </div>
+  <div class="exercise-meta">
+    15 reps  ·  16 kg KB
+  </div>
+  <div class="exercise-media">
+    <video autoplay="" class="exercise-thumb" loop="" muted="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" playsinline="" src="videos/Kettlebell Swing.mp4">
+  </video>
+  <div class="exercise-thumb exercise-placeholder" style="display:none">
+    Afbeelding volgt
+  </div>
+</div>
+<ul class="exercise-bullets">
+  <li>
+    Heupen explosief naar voren, armen passief
+  </li>
+  <li>
+    KB tot schouderhoogte, core strak bij elke rep
+  </li>
+  <li class="fout">
+    Squatbeweging maken
+  </li>
 </ul>
 </div>
 </div>
 </div>
 <script>
-  function toon(id, el) {
+function toon(id, el) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.getElementById('panel-' + id).classList.add('active');
     el.classList.add('active');
     window.scrollTo(0, 0);
-  }
-</script>
-<div id="timer-bar">
-<div id="timer-inner">
-<div id="timer-display">00:00:00</div>
-<div id="timer-controls">
-<button id="btn-toggle" onclick="toggleTimer()">Start</button>
-<button id="btn-stop" onclick="stopTimer()">Stop</button>
-</div>
-</div>
-</div>
-<style>
-  #timer-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #111;
-    color: #fff;
-    z-index: 100;
-  }
-  #timer-inner {
-    max-width: 640px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-  }
-  #timer-display {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 36px;
-    letter-spacing: 0.06em;
-    line-height: 1;
-  }
-  #timer-controls {
-    display: flex;
-    gap: 10px;
-  }
-  #timer-controls button {
-    background: none;
-    border: 1px solid #fff;
-    color: #fff;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    letter-spacing: 0.08em;
-    padding: 5px 14px;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: background 0.15s, color 0.15s;
-  }
-  #timer-controls button:hover {
-    background: #fff;
-    color: #111;
-  }
-</style>
-<script>
-  var timerStart = null;
+  }</script>
+  <div id="timer-bar">
+    <div id="timer-inner">
+      <div id="timer-display">
+        00:00:00
+      </div>
+      <div id="timer-controls">
+        <button id="btn-toggle" onclick="toggleTimer()">
+          Start
+        </button>
+        <button id="btn-stop" onclick="stopTimer()">
+          Stop
+        </button>
+      </div>
+    </div>
+  </div>
+  <script>
+var timerStart = null;
   var timerElapsed = 0;
   var timerRunning = false;
   var timerRaf = null;
@@ -802,7 +1108,6 @@
     document.getElementById('btn-toggle').textContent = 'Start';
     cancelAnimationFrame(timerRaf);
     document.getElementById('timer-display').textContent = '00:00:00';
-  }
-</script>
-</body>
+  }</script>
+  </body>
 </html>
